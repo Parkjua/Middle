@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/scroll.css" />
+    <link rel="stylesheet" type="text/css" href="./css/cursor.css" />
+    <script src="js/mouse.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/cursor.css" />
+    <script
+      src="https://kit.fontawesome.com/48b05fd135.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: black;
+        cursor: none;
+        /* cursor: none; */
+      }
+      header {
+        color: #ffffff;
+        /* position: absolute; */
+        padding: 20px 0px;
+        margin-bottom: 10px;
+        height: 130px;
+        width: 100%;
+        z-index: 999;
+      }
+
+      li {
+        list-style-type: none;
+      }
+      a {
+        color: #ffffff;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      .gnbMenu {
+        justify-content: space-between;
+        align-items: center;
+        float: right;
+        display: flex;
+        height: 50px;
+      }
+      .gnbMenu li {
+        float: left;
+      }
+      .gnbMenu a {
+        position: relative;
+        padding: 6px 30px;
+        list-style: none;
+        margin-left: 40px;
+      }
+      .gnbMenu a:after {
+        content: " ";
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background-color: #ffffff;
+        transition: all 0.2s ease-out;
+      }
+      .gnbMenu a:hover::after {
+        width: 70px;
+      }
+
+      #logo {
+        color: #ffffff;
+        margin: 0px 20px;
+        padding: 20px 20px;
+        font-size: 40px;
+        font-weight: bolder;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        margin-right: 20px;
+      }
+      /* 여기까지 메뉴입니다. */
+
+      #videoSection {
+        position: relative;
+        text-align: center;
+      }
+
+      #videoSection iframe {
+        box-shadow: 0 8px 32px 0 rgba(167, 173, 191, 0.35);
+        border: solid 1px #a9a9a9;
+        border-radius: 20px;
+        position: relative;
+        margin-top: 0px;
+        width: 700px;
+        height: 350px;
+      }
+      #videoSection h3 {
+        margin-top: 50px;
+        margin-bottom: 30px;
+        color: #a9a9a9;
+      }
+      #videoSection span {
+        color: #58b8ec;
+      }
+
+      #profileSection1 {
+        margin-top: 50px;
+        display: flex;
+        height: 380px;
+        justify-content: center;
+        align-items: center;
+      }
+      #profileSection2 {
+        display: flex;
+        height: 380px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #profileSection3 {
+        display: flex;
+        height: 380px;
+        justify-content: center;
+        align-items: center;
+      }
+      .team {
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .team-item {
+        flex-basis: 200px;
+        flex-shrink: 0;
+        margin: 0 12px;
+        transition: all 0.4s;
+      }
+      .team-item:hover {
+        flex-basis: 250px;
+        margin: 0 20px;
+      }
+      .team-item img {
+        width: 100%;
+      }
+      .profile {
+        position: relative;
+        background-color: #222;
+        overflow: hidden;
+      }
+      .profile:before {
+        content: " ";
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.95+100 */
+        background: -moz-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.95) 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.95) 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.95) 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#f2000000',GradientType=0 ); /* IE6-9 */
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 300px;
+      }
+      .profile-contents {
+        /* background-color: aqua; */
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        color: #ffffff;
+      }
+      .profile-contents h2 {
+        font-size: 20px;
+      }
+      .profile-contents h2 span {
+        display: block;
+        font-size: 12px;
+      }
+      .profile-contents .yellow {
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff15c;
+      }
+      .profile-contents .purple {
+        font-size: 12px;
+        font-weight: bold;
+        color: #891bff;
+      }
+      .profile-contents .orange {
+        font-size: 12px;
+        font-weight: bold;
+        color: #ff7e1b;
+      }
+      .profile-contents .mint {
+        font-size: 12px;
+        font-weight: bold;
+        color: #1bffca;
+      }
+      .profile-contents .black {
+        font-size: 12px;
+        font-weight: bold;
+        color: #a9a9a9;
+      }
+      .profile-contents .green {
+        font-size: 12px;
+        font-weight: bold;
+        color: #1fff06;
+      }
+      .profile-contents .pink {
+        font-size: 12px;
+        font-weight: bold;
+        color: #ed81cb;
+      }
+      .profile-contents p {
+        color: white;
+        font-size: 13px;
+        min-width: 140px;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 1.2;
+        transition: all 0.4s;
+        opacity: 0;
+        transition-delay: 0.2s;
+      }
+      .team-item:hover .profile-contents p {
+        opacity: 1;
+        max-height: 8em;
+        margin-top: 10px;
+      }
+
+      footer {
+        display: flex;
+        /* width: 100%; */
+        height: 70px;
+        bottom: 0px;
+        position: relative;
+        /* border-top: 1px solid #c4c4c4; */
+        padding-top: 30px;
+        background-color: black;
+        color: #808080;
+        font-size: 11px;
+        margin-bottom: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_logo {
+        display: block;
+        margin-right: 20px;
+      }
+      .footer_logo img {
+        width: 50px;
+        opacity: 0.2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="cursor"></div>
+      <nav>
+        <div id="logo">
+          <a href="index.html"><img src="img/Logo.png" alt="logo" /></a>
+        </div>
+        <div class="gnbMenu">
+          <ul>
+            <li>
+              <a href="layout1.html" data-hover="1" class="text1">EPISODE</a>
+            </li>
+            <li>
+              <a href="layout2.html" data-hover="2" class="text2">CAST</a>
+            </li>
+            <li>
+              <a href="layout3.html" data-hover="3" class="text3">HIGHLIGHT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section id="videoSection">
+      <h3>CREW <span>PROFILE</span></h3>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/GmrTp4BEXcw"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </section>
+    <section id="profileSection1">
+      <div class="wrapper">
+        <ul class="team">
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/dong.jpeg" />
+              <div class="profile-contents">
+                <h2>신동엽<span class="green">Shin Dong-Yeob</span></h2>
+                <p>
+                  <span class="green">출생</span>&nbsp; 1971.02.17<br />
+                  <span class="green">직업</span>&nbsp; MC,개그맨<br />
+                  <span class="green">소속사</span>&nbsp; SM C&C<br />
+                  <span class="green">학력</span>&nbsp; 서울예술대학
+                  연극영화과<br />
+                  <span class="green">데뷔</span>&nbsp; 1991년 SBS 특채
+                  개그맨<br />
+                  <span class="green">수상</span>&nbsp; 2021년 SBS 연예대상
+                  대상<br />
+                  <span class="green">작품</span>&nbsp;
+                  방송,오디오,공연,영화,기타<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/hoon.jpeg" />
+              <div class="profile-contents">
+                <h2>정상훈<span class="pink">Jung Sang Hoon</span></h2>
+                <p>
+                  <span class="pink">출생</span>&nbsp; 1976.09.09<br />
+                  <span class="pink">직업</span>&nbsp; 방송연예인,뮤지컬배우<br />
+                  <span class="pink">소속사</span>&nbsp; 잼엔터테인먼트<br />
+                  <span class="pink">학력</span>&nbsp; 서울예술대학
+                  방송연예과<br />
+                  <span class="pink">데뷔</span>&nbsp; 1998년 SBS 드라마 '나
+                  어때'<br />
+                  <span class="pink">작품</span>&nbsp;
+                  방송,영화,공연,도서,기타<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/mi.jpeg" />
+              <div class="profile-contents">
+                <h2>안영미<span class="yellow">Ahn Young Mi</span></h2>
+                <p>
+                  <span class="yellow">출생</span>&nbsp; 1983.11.05<br />
+                  <span class="yellow">직업</span>&nbsp; 개그맨,탤런트<br />
+                  <span class="yellow">소속사</span>&nbsp; 미디어랩시소<br />
+                  <span class="yellow">학력</span>&nbsp; 백제예술대학
+                  방송연예과<br />
+                  <span class="yellow">데뷔</span>&nbsp; 2004년 KBS 19기 공채
+                  개그맨<br />
+                  <span class="yellow">작품</span>&nbsp;
+                  방송,오디오,영화,앨범<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/kyo.jpeg" />
+              <div class="profile-contents">
+                <h2>김민교<span class="purple">Kim Min-kyo</span></h2>
+                <p>
+                  <span class="purple">출생</span>&nbsp; 1974.04.15<br />
+                  <span class="purple">직업</span>&nbsp; 영화배우<br />
+                  <span class="purple">학력</span>&nbsp; 서울예술대학교<br />
+                  <span class="purple">데뷔</span>&nbsp; 1998년 영화 '성철'<br />
+                  <span class="purple">작품</span>&nbsp; 공연,방송,영화,기타<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/soo.jpeg" />
+              <div class="profile-contents">
+                <h2>권혁수<span class="green">Kwon Hyuk-soo</span></h2>
+                <p>
+                  <span class="green">출생</span>&nbsp; 1986.05.06<br />
+                  <span class="green">직업</span>&nbsp; 탤런트,방송연예인<br />
+                  <span class="green">소속사</span>&nbsp; 휴맵컨탠츠<br />
+                  <span class="green">학력</span>&nbsp; 서울예술대학 연극과
+                  졸업<br />
+                  <span class="green">데뷔</span>&nbsp; 2012년 tvN 'SNL 코리아
+                  2'<br />
+                  <span class="green">작품</span>&nbsp;
+                  방송,오디오,공연,영화,기타<br />
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- 1 -->
+    <section id="profileSection2">
+      <div class="wrapper">
+        <ul class="team">
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/joo.jpeg" />
+              <div class="profile-contents">
+                <h2>주현영<span class="yellow">Joo Hyunyoung</span></h2>
+                <p>
+                  <span class="yellow">출생</span>&nbsp; 1996.01.14<br />
+                  <span class="yellow">직업</span>&nbsp; 영화배우<br />
+                  <span class="yellow">소속사</span>&nbsp; AIMC<br />
+                  <span class="yellow">학력</span>&nbsp; 국민대학교 연극전공<br />
+                  <span class="yellow">데뷔</span>&nbsp; 2019년 영화 '내가
+                  그리웠니'<br />
+                  <span class="yellow">작품</span>&nbsp;
+                  방송,오디오,영화,앨범<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/hwa.jpeg" />
+              <div class="profile-contents">
+                <h2>차정화<span class="purple">Cha Cheong Hwa</span></h2>
+                <p>
+                  <span class="purple">출생</span>&nbsp; 1980.04.28<br />
+                  <span class="purple">직업</span>&nbsp; 탤런트,영화배우<br />
+                  <span class="purple">소속사</span>&nbsp; 아이오케이컴퍼니<br />
+                  <span class="purple">학력</span>&nbsp; 상명대학교 연극학과
+                  학사<br />
+                  <span class="purple">데뷔</span>&nbsp; 2005년 뮤지컬'뒷골목
+                  스토리'<br />
+                  <span class="purple">작품</span>&nbsp; 영화,방송,공연,기타<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/hyuk.jpeg" />
+              <div class="profile-contents">
+                <h2>정혁<span class="black">Jung Hyuk</span></h2>
+                <p>
+                  <span class="black">출생</span>&nbsp; 1991.09.20<br />
+                  <span class="black">직업</span>&nbsp; 모델,방송인<br />
+                  <span class="black">신체</span>&nbsp; 184cm<br />
+                  <span class="black">소속사</span>&nbsp; 에스팀엔터테인먼트<br />
+                  <span class="black">경력</span>&nbsp; 2015 잡지ELLE,MAPS,GOOUT
+                  모델<br />
+                  <span class="black">작품</span>&nbsp; 방송<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/ji.jpeg" />
+              <div class="profile-contents">
+                <h2>이수지<span class="mint">Lee Su Ji</span></h2>
+                <p>
+                  <span class="mint">출생</span>&nbsp; 1985.04.02<br />
+                  <span class="mint">직업</span>&nbsp; 개그맨<br />
+                  <span class="mint">소속사</span>&nbsp; IHQ<br />
+                  <span class="mint">데뷔</span>&nbsp; 2012년 KBS 27기 공채
+                  개그맨<br />
+                  <span class="mint">수상</span>&nbsp; 2016년 KBS코미디부문
+                  최우수상<br />
+                  <span class="mint">작품</span>&nbsp; 방송,영화<br />
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- 2 -->
+    <section id="profileSection3">
+      <div class="wrapper">
+        <ul class="team">
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/wendy.jpeg" />
+              <div class="profile-contents">
+                <h2>웬디<span class="mint">Wendy</span></h2>
+                <p>
+                  <span class="mint">출생</span>&nbsp; 1994.02.21<br />
+                  <span class="mint">직업</span>&nbsp; 가수<br />
+                  <span class="mint">소속그룹</span>&nbsp; 레드벨벳,갓 더
+                  비트<br />
+                  <span class="mint">소속사</span>&nbsp; SM엔터테인먼트<br />
+                  <span class="mint">수상</span>&nbsp; 2022년 하이원서울가요대상
+                  발라드상<br />
+                  <span class="mint">작품</span>&nbsp; 방송,오디오,공연,앨범<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/min.png" />
+              <div class="profile-contents">
+                <h2>김민수<span class="orange">Kim Minsoo</span></h2>
+                <p>
+                  <span class="orange">출생</span>&nbsp; 1991.10.08<br />
+                  <span class="orange">직업</span>&nbsp;
+                  개그맨,온라인콘텐츠창작자<br />
+                  <span class="orange">신체</span>&nbsp; 178cm<br />
+                  <span class="orange">소속그룹</span>&nbsp; 피식대학<br />
+                  <span class="orange">데뷔</span>&nbsp; 2016년
+                  SBS'웃찾사-레전드 매치'<br />
+                  <span class="orange">작품</span>&nbsp; 방송,공연,앨범<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/hyup.jpeg" />
+              <div class="profile-contents">
+                <h2>김상협<span class="purple">Kim Sang-hyup</span></h2>
+                <p>
+                  <span class="purple">출생</span>&nbsp; 1987.09.25<br />
+                  <span class="purple">직업</span>&nbsp; 탤런트,뮤지컬배우<br />
+                  <span class="purple">신체</span>&nbsp; 178cm,75kg<br />
+                  <span class="purple">소속사</span>&nbsp; AIMC<br />
+                  <span class="purple">가족</span>&nbsp; 배우자 이산하, 어머니
+                  이미숙<br />
+                  <span class="purple">학력</span>&nbsp; 대경대학교 뮤지컬과
+                  졸업<br />
+                  <span class="purple">작품</span>&nbsp; 방송,공연,기타<br />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="profile">
+              <img src="img/jin.jpeg" />
+              <div class="profile-contents">
+                <h2>이소진<span class="yellow">Lee So-Jin</span></h2>
+                <p>
+                  <span class="yellow">출생</span>&nbsp; 1991.06.04<br />
+                  <span class="yellow">직업</span>&nbsp; 영화배우<br />
+                  <span class="yellow">소속사</span>&nbsp; AIMC<br />
+                  <span class="yellow">학력</span>&nbsp; 파슨스디자인스쿨
+                  일러스트레이션 학사<br />
+                  <span class="yellow">데뷔</span>&nbsp; 2017년 영화
+                  '특별시민'<br />
+                  <span class="yellow">작품</span>&nbsp; 방송,영화<br />
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <footer>
+      <div class="footer_logo">
+        <img src="img/footer.png" alt="logo" />
+      </div>
+      <p>Copyright ⓒ2022 SNL KOREA. All right reserved.</p>
+    </footer>
+    <font-awesome-icon icon="fa-solid fa-arrow-up-long" />
+    <aside id="scrollTop">
+      <br />
+      <i class="fa-solid fa-angles-up"></i>
+    </aside>
+    <script>
+      $("#scrollTop").hide();
+      // 처음에는 탑 이미지를 감춥니다.
+      $("#scrollTop").click(function () {
+        console.log("click");
+        $("html,body").animate({ scrollTop: 0 }, 1000);
+      });
+      $(window).scroll(function () {
+        // 스크롤을 할때
+        if ($(this).scrollTop() > 100) {
+          $("#scrollTop").fadeIn();
+        }
+        // 스크롤이 100 픽셀만큼 내려오면 탑 아이콘이 서서히 나타납니다.
+        else {
+          $("#scrollTop").fadeOut();
+        }
+        // 스크롤이 100 픽셀 이하이면 탑 아이콘이 서서히 사라집니다.
+      });
+    </script>
+  </body>
+</html>
