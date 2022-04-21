@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/scroll.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/cursor.css"> -->
+    <!-- <script src="js/mouse.js"></script> -->
+    <script src="js/jquery-3.6.0.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="css/cursor.css"> -->
+    <script
+    src="https://kit.fontawesome.com/48b05fd135.js"
+    crossorigin="anonymous"
+  ></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        color: #ffffff;
+        background-color: #000000;
+      }
+      header {
+        color: #ffffff;
+        /* position: absolute; */
+        /* display: flex; */
+        padding: 20px 0px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 130px;
+        z-index: 999;
+      }
+      a {
+        color: #ffffff;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      .gnbMenu {
+        justify-content: space-between;
+        align-items: center;
+        float: right;
+        display: flex;
+        height: 50px;
+      }
+      .gnbMenu li {
+        float: left;
+      }
+      .gnbMenu a {
+        position: relative;
+        padding: 6px 30px;
+        list-style: none;
+        margin-left: 40px;
+      }
+      .gnbMenu a:after {
+        content: " ";
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background-color: #ffffff;
+        transition: all 0.2s ease-out;
+      }
+      .gnbMenu a:hover::after {
+        width: 70px;
+      }
+      #logo {
+        color: #ffffff;
+        margin: 0px 20px;
+        padding: 20px 20px;
+        font-size: 40px;
+        font-weight: bolder;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        margin-right: 20px;
+      }
+      /* 여기까지 메뉴입니다. */
+
+      li {
+        list-style-type: none;
+      }
+
+      .main_coner1 {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+      .main_text{
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        margin-left: 30px;
+      }
+      .main_text h3{
+        font-weight: lighter;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+      .main_logo{
+          position: relative;
+      }
+      .main_logo img{
+          width: 60px;
+          border-radius: 50%;
+      }
+      .main_logo img:hover{
+          width: 80px;
+          border-radius: 50%;
+          transition: all 0.5s;
+      }
+      .sub_coner1 {
+        margin-top: 50px;
+        display: flex;
+        /* height: 380px; */
+        justify-content: center;
+        align-items: center;
+      }
+      .main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+       .sub{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .main_item ,.sub_img{
+        margin: 0 12px;
+      }
+      .sub_item p{
+        margin-top: 10px;
+        text-align: center;
+      }
+      .main_item img, .sub_item img{
+          width: 100%;
+      }
+      .main_img {
+        width: 350px;
+        position: relative;
+        border-radius: 20px;
+        margin-left: 20px;
+      }
+      .main_img img,video{
+          border-radius: 25px;
+          /* box-shadow: 10px 10px 10px #ffffff; */
+      }
+      .main_video video{
+          width: 450px;
+      }
+     .sub_img{
+        width: 250px;
+        position: relative;
+        background-color: #222;
+        overflow: hidden;
+      }
+      .main_img:before,  .main_video:before, .sub_img:before {
+        content: " ";
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.95+100 */
+        background: -moz-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.95) 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.95) 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.95) 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#f2000000',GradientType=0 ); /* IE6-9 */
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 110px;
+      } 
+      .main_contents{
+          width: 80px;
+        position: absolute;
+        right: 130px;
+        bottom: 50px;
+        /* padding: 10px; */
+      }
+       .sub_contents{
+        position: absolute;
+        right: 110px;
+        bottom: 50px;
+        /* padding: 10px; */
+      }
+      
+      .main_contents img, .sub_contents img{
+        overflow: hidden;
+        transition: all 0.3s;
+        opacity: 0;
+      }
+      .main_item :hover  .main_contents img{
+        opacity: 1;
+        max-height: 6em;
+        margin-top: 10px;
+      }
+     .sub_item :hover  .sub_contents img{
+        opacity: 1;
+        max-height: 6em;
+        margin-top: 10px;
+      }
+
+      .container{
+        min-height: 100vh;
+        position: relative;
+        width: 100%;
+      }
+
+      footer {
+      display: flex;
+      /* width: 100%; */
+      height: 70px;
+      bottom: 0px;
+      position: relative;
+      /* border-top: 1px solid #c4c4c4; */
+      padding-top: 30px;
+      background-color: black;
+      color: #808080;
+      font-size: 11px;
+      margin-bottom: 30px;
+      justify-content: center;
+      align-items: center;
+      }
+      .footer_logo{
+        display:block;
+        margin-right: 20px;
+  
+      }
+      .footer_logo img{
+        width: 50px;
+        opacity: 0.2;
+      }
+      p span{
+        color: #ffffff;
+        font-weight: bold;
+      }
+      p{
+        color: #a9a9a9;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="cursor"></div>
+      <nav>
+        <div id="logo">
+          <a href="index.html"><img src="img/Logo.png" alt="logo" /></a>
+        </div>
+        <div class="gnbMenu">
+          <ul>
+            <li><a href="layout1.html" data-hover="1" class="text1">EPISODE</a></li>
+            <li><a href="layout2.html" data-hover="2" class="text2">CAST</a></li>
+            <li><a href="layout3.html" data-hover="3" class="text3">HIGHLIGHT</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section class="main_coner1">
+      <ul class="main">
+        <li class="main_item">
+            <div class="main_img">
+              <img src="img/ai.jpeg" />
+              <div class="main_contents">
+                  <a href="https://www.youtube.com/watch?v=kStrtguSsgk"><img src="img/icon.png"></a>
+              </div>
+            </div>
+        </li>
+        <li class="main_item">
+            <div class="main_video">
+                <a href="https://www.youtube.com/watch?v=1f3hzvhmcCs" ><video src="img/zo.mp4"  type="video/mp4"  autoplay muted loop></video></a>
+            </div>
+        </li>
+      </ul>
+      <div class="main_text">
+        <h3>하이라이트가<br/>더 보고싶다면?</h3>
+        <div class="main_logo">
+        <a href="https://www.youtube.com/watch?v=aUxab0I1X7E"><img src="img/copang.jpeg"></a>
+        </div>
+      </div>
+    </section>
+    <section class="sub_coner1">
+      <div>
+          <ul class="sub">
+              <li class="sub_item">
+                  <div class="sub_img">
+                    <img src="img/ai1.jpeg" />
+                    <div class="sub_contents">
+                        <a href="https://www.youtube.com/watch?v=1IVSXFxjcT4"><img src="img/icon.png"></a>
+                    </div>
+                  </div>
+                  <p><span>Ai승무원G-1 |</span> 조정석</p>
+              </li>
+              <li class="sub_item">
+                <div class="sub_img">
+                  <img src="img/ai2.jpeg" />
+                  <div class="sub_contents">
+                      <a href="https://www.youtube.com/watch?v=qflSusRHTig"><img src="img/icon.png"></a>
+                  </div>
+                </div>
+                <p><span>Ai백화점 직원 |</span> 조여정</p>
+            </li>
+            <li class="sub_item">
+                <div class="sub_img">
+                  <img src="img/ai3.jpeg" />
+                  <div class="sub_contents">
+                      <a href="https://www.youtube.com/watch?v=GdDJyFUaLXA"><img src="img/icon.png"></a>
+                  </div>
+                </div>
+                <p><span>Ai인턴 |</span> 제시</p>
+            </li>
+            <li class="sub_item">
+                <div class="sub_img">
+                  <img src="img/ai4.jpeg" />
+                  <div class="sub_contents">
+                      <a href="https://www.youtube.com/watch?v=u19TuZzV8ds&t=165s"><img src="img/icon.png"></a>
+                  </div>
+                </div>
+                <p><span>Ai경호원 |</span> 강하늘</p>
+            </li>
+          </ul>
+      </div>
+    </section>
+
+    <section class="sub_coner1">
+      <div>
+          <ul class="sub">
+            <li class="sub_item">
+                <div class="sub_img">
+                  <img src="img/zo1.jpeg" />
+                  <div class="sub_contents">
+                      <a href="https://www.youtube.com/watch?v=1f3hzvhmcCs"><img src="img/icon.png"></a>
+                  </div>
+                </div>
+                <p><span>주기자가 간다 |</span> <br/>국민의힘 윤석열</p>
+            </li>
+              <li class="sub_item">
+                  <div class="sub_img">
+                    <img src="img/zo2.jpeg" />
+                    <div class="sub_contents">
+                        <a href="https://www.youtube.com/watch?v=nZ5FQmz4YXY"><img src="img/icon.png"></a>
+                    </div>
+                  </div>
+                  <p><span>주기자가 간다 |</span> <br/>국가혁명당 허경영</p>
+              </li>
+              <li class="sub_item">
+                <div class="sub_img">
+                  <img src="img/zo3.jpeg" />
+                  <div class="sub_contents">
+                      <a href="https://www.youtube.com/watch?v=aUxab0I1X7E"><img src="img/icon.png"></a>
+                  </div>
+                </div>
+                <p><span>주기자가 간다 |</span> <br/>더불어민주당 이재명</p>
+            </li>
+            <li class="sub_item">
+                <div class="sub_img">
+                  <img src="img/zo4.jpeg" />
+                  <div class="sub_contents">
+                      <a href="https://www.youtube.com/watch?v=X758VPJL-90"><img src="img/icon.png"></a>
+                  </div>
+                </div>
+                <p><span>주기자가 간다 |</span> <br/>정의당 심상정</p>
+            </li>
+          </ul>
+          </div>
+    </section>
+    <section class="sub_coner1">
+        <div>
+            <ul class="sub">
+              <li class="sub_item">
+                  <div class="sub_img">
+                    <img src="img/1.jpeg" />
+                    <div class="sub_contents">
+                        <a href="https://www.youtube.com/watch?v=ReKRSTB5PK8"><img src="img/icon.png"></a>
+                    </div>
+                  </div>
+                  <p><span>열일곱이지만 서른입니다 |</span> <br/>신혜선</p>
+              </li>
+                <li class="sub_item">
+                    <div class="sub_img">
+                      <img src="img/2.jpeg" />
+                      <div class="sub_contents">
+                          <a href="https://www.youtube.com/watch?v=GtcDuFZl3AM"><img src="img/icon.png"></a>
+                      </div>
+                    </div>
+                    <p><span>스트릿 우먼 퐈이터 |</span> <br/>조진웅</p>
+                </li>
+                <li class="sub_item">
+                  <div class="sub_img">
+                    <img src="img/3.jpeg" />
+                    <div class="sub_contents">
+                        <a href="https://www.youtube.com/watch?v=z3RnauyMuaU"><img src="img/icon.png"></a>
+                    </div>
+                  </div>
+                  <p><span>슬기로운 의사생활 |</span> <br/>조정석</p>
+              </li>
+              <li class="sub_item">
+                  <div class="sub_img">
+                    <img src="img/4.jpeg" />
+                    <div class="sub_contents">
+                        <a href="https://www.youtube.com/watch?v=mzoqfYHmagQ"><img src="img/icon.png"></a>
+                    </div>
+                  </div>
+                  <p><span>술에 도른 여자들 |</span> <br/>이선빈x한선화x정은지</p>
+              </li>
+            </ul>
+            </div>
+      </section>
+      <footer>
+        <div class="footer_logo">
+            <img src="img/footer.png" alt="logo"></a>
+        </div>
+         <p>Copyright ⓒ2022 SNL KOREA. All right reserved.</p>
+    </footer>
+    <font-awesome-icon icon="fa-solid fa-arrow-up-long" />
+    <aside id="scrollTop">
+      <br />
+      <i class="fa-solid fa-angles-up"></i>
+    </aside>
+    <script>
+      $("#scrollTop").hide();
+  // 처음에는 탑 이미지를 감춥니다.
+  $("#scrollTop").click(function () {
+    console.log("click");
+    $("html,body").animate({ scrollTop: 0 }, 1000);
+  });
+  $(window).scroll(function () {
+    // 스크롤을 할때
+    if ($(this).scrollTop() > 100) {
+      $("#scrollTop").fadeIn();
+    }
+    // 스크롤이 100 픽셀만큼 내려오면 탑 아이콘이 서서히 나타납니다.
+    else {
+      $("#scrollTop").fadeOut();
+    }
+    // 스크롤이 100 픽셀 이하이면 탑 아이콘이 서서히 사라집니다.
+  });
+  
+    </script>
+  </body>
+</html>
