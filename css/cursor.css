@@ -1,0 +1,48 @@
+/* 마우스 */
+.cursor {
+  width: 50px;
+  height: 50px;
+  border: solid 2px white;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  transform-origin: 100% 100%;
+  transition: all 0.6s ease;
+  transition-property: background, transform;
+  pointer-events: none;
+  /* backdrop-filter: graysclae(0.2s); */
+  backdrop-filter: blur(3px);
+  /* opacity: 0.5; */
+}
+.link_hover {
+  transform: scale(2);
+  background: rgba(144, 19, 254, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+  border: none;
+  border-radius: 50%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+.cursor.show2 {
+  transform: scale(2);
+  background: rgba(19, 209, 254, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: none;
+  border-radius: 50%;
+}
+.cursor.show3 {
+  transform: scale(2);
+  background: rgba(98, 255, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: none;
+  border-radius: 50%;
+}

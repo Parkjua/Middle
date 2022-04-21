@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNL</title>
+    <script src="js/mouse.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/cursor.css">
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: black;
+        cursor: none;
+        overflow-x: hidden;
+        /* overflow-y: hidden; */
+      }
+      header {
+        color: #ffffff;
+        position: absolute;
+        padding: 20px 0px;
+        margin-bottom: 10px;
+        height: 130px;
+        width: 100%;
+        z-index: 999;
+      }
+      li {
+        list-style-type: none;
+      }
+      a {
+        color: #ffffff;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      .gnbMenu {
+        justify-content: space-between;
+        align-items: center;
+        float: right;
+        display: flex;
+        height: 50px;
+      }
+      .gnbMenu li {
+        float: left;
+      }
+      .gnbMenu a {
+        position: relative;
+        padding: 6px 30px;
+        list-style: none;
+        margin-left: 40px;
+      }
+      .gnbMenu a:after {
+        content: " ";
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background-color: #ffffff;
+        transition: all 0.2s ease-out;
+      }
+      .gnbMenu a:hover::after {
+        width: 70px;
+      }
+
+      #logo {
+        color: #ffffff;
+        margin: 0px 20px;
+        padding: 20px 20px;
+        font-size: 40px;
+        font-weight: bolder;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        margin-right: 20px;
+      }
+      
+      /* 여기까지 메뉴입니다. */
+
+      .text-wrap {
+        width: 520px;
+        height: 100vh;
+        padding: 240px 60px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #000000;
+        z-index: 10;
+      }
+      .text-wrap h2 {
+        /* margin-top: 50px; */
+        color: #ffffff;
+        font-size: 64px;
+        line-height: 80px;
+        font-weight: normal;
+      }
+      .text-wrap h3 {
+        color: #a9a9a9;
+        font-size: 40px;
+        line-height: 80px;
+        font-weight: lighter;
+        /* margin-bottom: 20px; */
+      }
+      .text-wrap p {
+        color: #ffffff;
+        font-size: 16px;
+        margin: 30px 0;
+        line-height: 2em;
+        /* margin-bottom: 30px; */
+      }
+      .btn {
+        display: inline-block;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 25px;
+        background-color: #7913ff;
+        transition: all 0.2s;
+        border-bottom: 5px solid #320869;
+      }
+      .btn:hover {
+        transform: translateY(10px);
+        border-bottom: 2px solid #42098d;
+      }
+      .video-overlay {
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0.5+21,0.2+40,0.2+63,0.5+79,1+100 */
+        background: -moz-linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.5) 21%,
+          rgba(0, 0, 0, 0.2) 40%,
+          rgba(0, 0, 0, 0.2) 63%,
+          rgba(0, 0, 0, 0.5) 79%,
+          rgba(0, 0, 0, 1) 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.5) 21%,
+          rgba(0, 0, 0, 0.2) 40%,
+          rgba(0, 0, 0, 0.2) 63%,
+          rgba(0, 0, 0, 0.5) 79%,
+          rgba(0, 0, 0, 1) 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.5) 21%,
+          rgba(0, 0, 0, 0.2) 40%,
+          rgba(0, 0, 0, 0.2) 63%,
+          rgba(0, 0, 0, 0.5) 79%,
+          rgba(0, 0, 0, 1) 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+      }
+      .video-wrap {
+        position: relative;
+        width: calc(100% - 520px);
+        z-index: -9;
+      }
+      .video-wrap:before {
+        position: relative;
+        width: calc(100% - 520px);
+        z-index: -9;
+      }
+      .video-wrap video {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100vh;
+      }
+      .icon {
+        width: 20px;
+        width: 20px;
+        margin-left: 20px;
+        background-size: contain;
+      }
+
+      .container{
+        min-height: 100vh;
+        position: relative;
+        width: 100%;
+      }
+
+      footer {
+      display: flex;
+      /* width: 100%; */
+      height: 70px;
+      bottom: 0px;
+      position: relative;
+      /* border-top: 1px solid #c4c4c4; */
+      padding-top: 30px;
+      background-color: black;
+      color: #808080;
+      font-size: 11px;
+      margin-bottom: 30px;
+      justify-content: center;
+      align-items: center;
+      }
+      .footer_logo{
+        display:block;
+        margin-right: 20px;
+  
+      }
+      .footer_logo img{
+        width: 50px;
+        opacity: 0.2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="cursor"></div>
+      <nav>
+        <div id="logo">
+          <a href="index.html"><img src="img/Logo.png" alt="logo" /></a>
+        </div>
+        <div class="gnbMenu">
+          <ul>
+            <li><a href="layout1.html" data-hover="1">EPISODE</a></li>
+            <li><a href="layout2.html" data-hover="2" class="text1">CAST</a></li>
+            <li><a href="layout3.html" data-hover="3" class="text2">HIGHLIGHT</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="video-overlay"></div>
+      <div class="video-wrap">
+        <video
+          src="video/bg.mp4"
+          type="video/mp4"
+          autoplay
+          muted
+          loop="infinite"
+        ></video>
+      </div>
+      <div class="text-wrap">
+        <h2>SNL<br />KOREA</h2>
+        <h3>SEASON2</h3>
+        <hr />
+        <p>
+          매주 토요일 밤 10시, 차원이 다른 웃음을 플레이하라<br />
+          고품격 풍자, 초특급 웃음 토요일 밤 전국 배송<br />
+          오직 쿠팡플레이에서만 만나볼 수 있습니다.<br />
+        </p>
+        <div class="btn-wrap">
+          <a class="btn" href="https://coupangplay.app.link/4QSXqUQMgpb"
+            >지금보러가기</a
+          >
+          <embed
+          src="video/bg.mp3"
+          autostart="true"
+          hidden="true"
+          loop="infinite" id="video1"
+        />
+        </div>
+      </div>
+    </div>
+      <footer>
+        <div class="footer_logo">
+            <img src="img/footer.png" alt="logo"></a>
+        </div>
+         <p>Copyright ⓒ2022 SNL KOREA. All right reserved.</p>
+    </footer>
+  </body>
+</html>

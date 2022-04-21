@@ -1,0 +1,28 @@
+#scrollTop {
+  width: 70px;
+  height: 70px;
+  line-height: 24px;
+  right: 5%;
+  bottom: 30px;
+  background: rgba(144, 19, 254, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border-radius: 10px;
+  border: 0.8px solid #a9a9a9;
+  border-radius: 100%;
+  text-align: center;
+  color: #a9a9a9;
+  font-weight: bold;
+  position: fixed;
+}
+#scrollTop:hover {
+  background: rgba(144, 19, 254, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid #a9a9a9;
+  border-radius: 100%;
+  color: white;
+  cursor: pointer;
+}
